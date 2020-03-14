@@ -1,0 +1,22 @@
+﻿<Window x:Class="MergePDF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MergePDF"
+        mc:Ignorable="d"
+        Title="Merge PDFs" Height="274" Width="462">
+    <Grid Height="207" Margin="0,0,10,0">
+        <Button x:Name="btnOpenFiles" Content="Add files" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Click="btnOpenFiles_Click"/>
+        <DataGrid x:Name="dgFiles" Margin="10,35,0,0" >
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="btnMerge" Content="Merge files" HorizontalAlignment="Left" Margin="334,10,0,0" VerticalAlignment="Top" Width="100
+                " Click="btnMerge_Click"/>
+
+    </Grid>
+</Window>
