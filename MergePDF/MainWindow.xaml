@@ -6,17 +6,37 @@
         xmlns:local="clr-namespace:MergePDF"
         mc:Ignorable="d"
         Title="Merge PDFs" Height="274" Width="462">
-    <Grid Height="207" Margin="0,0,10,0">
-        <Button x:Name="btnOpenFiles" Content="Add files" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Click="btnOpenFiles_Click"/>
-        <DataGrid x:Name="dgFiles" Margin="10,35,0,0" >
-            <DataGrid.Columns>
-                <DataGridTemplateColumn>
-                    
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
-        <Button x:Name="btnMerge" Content="Merge files" HorizontalAlignment="Left" Margin="334,10,0,0" VerticalAlignment="Top" Width="100
-                " Click="btnMerge_Click"/>
 
+    <Grid Margin="0,0,0,0" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="73*"/>
+            <RowDefinition Height="9*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+        <DockPanel Height="25" VerticalAlignment="Top">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_File">
+                    <MenuItem Header="_New" />
+                    <MenuItem Header="_Open" Click="btnOpenFiles_Click" />
+                    <MenuItem Header="_Save" Click="btnMerge_Click" />
+                    <Separator />
+                    <MenuItem Header="_Exit" />
+                </MenuItem>
+                <MenuItem Header="_Help">
+                    <MenuItem Header="_About"/>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+        <Grid Margin="0,20,10,6" Grid.RowSpan="3">
+            <Button x:Name="btnOpenFiles" Content="Add files" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Click="btnOpenFiles_Click"/>
+            <Button x:Name="btnMerge" Content="Merge files" HorizontalAlignment="Right" Margin="0,10,0,0" VerticalAlignment="Top" Width="100" Click="btnMerge_Click"/>
+            <DataGrid x:Name="dgFiles" Margin="10,35,0,10" IsReadOnly="True" Grid.RowSpan="2" VerticalAlignment="Stretch">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn>
+
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
     </Grid>
 </Window>
