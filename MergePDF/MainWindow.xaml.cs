@@ -35,7 +35,15 @@ namespace MergePDF
                     _loadedFiles.Add(new LoadedFile(s));
                 }
                 dgFiles.ItemsSource = _loadedFiles;
+                dgFiles.Items.Refresh();
             }
+        }
+
+        private void RemoveFiles_Click(object sender, RoutedEventArgs e)
+        {
+            _loadedFiles.Clear();
+            dgFiles.ItemsSource = _loadedFiles;
+            dgFiles.Items.Refresh();
         }
 
         private void MergeFiles_Click(object sender, RoutedEventArgs e)
