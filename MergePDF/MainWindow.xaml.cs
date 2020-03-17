@@ -1,6 +1,8 @@
 ﻿using Microsoft.Win32;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Text;
 using System.Windows;
 
 namespace MergePDF
@@ -17,7 +19,7 @@ namespace MergePDF
             _loadedFiles = new List<LoadedFile>();
         }
 
-        private void btnOpenFiles_Click(object sender, RoutedEventArgs e)
+        private void OpenFiles_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog dlg = new OpenFileDialog
             {
@@ -36,7 +38,7 @@ namespace MergePDF
             }
         }
 
-        private void btnMerge_Click(object sender, RoutedEventArgs e)
+        private void MergeFiles_Click(object sender, RoutedEventArgs e)
         {
             if (_loadedFiles.Count() == 0)
             {
@@ -59,6 +61,20 @@ namespace MergePDF
                     PdfMerge.Merge(filePaths.ToArray(), dlg.FileName);
                 }
             }
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void MenuItemAbout_Click(object sender, RoutedEventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Merge PDFs");
+            sb.AppendLine($"Version: {Assembly.GetExecutingAssembly().GetName().Version}");
+            sb.AppendLine("Contact: bartosz.lampart@gmail.com");
+            MessageBox.Show(sb.ToString(), "About");
         }
     }
 }
