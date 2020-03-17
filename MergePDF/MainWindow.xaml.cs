@@ -38,19 +38,26 @@ namespace MergePDF
 
         private void btnMerge_Click(object sender, RoutedEventArgs e)
         {
-            SaveFileDialog dlg = new SaveFileDialog
+            if (_loadedFiles.Count() == 0)
             {
-                Filter = "Pdf Files|*.pdf",
-                RestoreDirectory = true
-            };
-
-            string fileName;
-
-            if (dlg.ShowDialog() == true)
+                MessageBox.Show("You have to add PDF files to merge.", "Warning");
+            }
+            else
             {
-                fileName = dlg.FileName;
-                var filePaths = from file in _loadedFiles select file.FilePath;
-                PdfMerge.Merge(filePaths.ToArray(), dlg.FileName);
+                SaveFileDialog dlg = new SaveFileDialog
+                {
+                    Filter = "Pdf Files|*.pdf",
+                    RestoreDirectory = true
+                };
+
+                string fileName;
+
+                if (dlg.ShowDialog() == true)
+                {
+                    fileName = dlg.FileName;
+                    var filePaths = from file in _loadedFiles select file.FilePath;
+                    PdfMerge.Merge(filePaths.ToArray(), dlg.FileName);
+                }
             }
         }
     }
